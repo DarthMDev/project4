@@ -32,6 +32,7 @@
             label1 = new Label();
             label_Hint = new Label();
             button_Submit = new Button();
+            label_GuessesRemaining = new Label();
             SuspendLayout();
             // 
             // textBox_Guess
@@ -66,6 +67,16 @@
             button_Submit.TabIndex = 3;
             button_Submit.Text = "Submit";
             button_Submit.UseVisualStyleBackColor = true;
+            button_Submit.Click += button_Submit_Click;
+            // 
+            // label_GuessesRemaining
+            // 
+            label_GuessesRemaining.AutoSize = true;
+            label_GuessesRemaining.Location = new Point(24, 404);
+            label_GuessesRemaining.Name = "label_GuessesRemaining";
+            label_GuessesRemaining.Size = new Size(159, 20);
+            label_GuessesRemaining.TabIndex = 4;
+            label_GuessesRemaining.Text = "Guesses Remaining: 10";
             // 
             // CodeBreaker
             // 
@@ -73,6 +84,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(label_GuessesRemaining);
             Controls.Add(button_Submit);
             Controls.Add(label_Hint);
             Controls.Add(label1);
@@ -90,5 +102,6 @@
         private Label label1;
         private Label label_Hint;
         private Button button_Submit;
+        private Label label_GuessesRemaining;
     }
 }
