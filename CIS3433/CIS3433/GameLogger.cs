@@ -17,16 +17,20 @@ namespace CIS3433
         }
         /// <summary>
         /// Starts a new game session by inserting a new record into the GameSessions table.
+        /// <param name="playerName">The name of the player.</param>
+        /// <param name="mode">The game mode (e.g., gamebreaker, gamemaker).</param>
         /// <param name="secretNumber">The secret number for the game session.</param>
+        /// 
         /// </summary>
-        public void StartNewGameSession(int secretNumber)
-       
+         public void StartNewGameSession(string playerName, string mode, int secretNumber)
         {
             using (var connection = new SqlConnection(connectionString))
             {
                 var query = "INSERT INTO GameSessions (PlayerName, Mode, SecretNumber, StartTime) OUTPUT INSERTED.SessionId VALUES (@PlayerName, @Mode, @SecretNumber, @StartTime)";
                 using (var command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@PlayerName", playerName);
+                    command.Parameters.AddWithValue("@Mode", mode);
                     command.Parameters.AddWithValue("@SecretNumber", secretNumber);
                     command.Parameters.AddWithValue("@StartTime", DateTime.Now);
 
