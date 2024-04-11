@@ -1,6 +1,6 @@
 ﻿namespace AB_game
 {
-    partial class CodeBreaker
+    partial class MakeCode
     {
         /// <summary>
         /// Required designer variable.

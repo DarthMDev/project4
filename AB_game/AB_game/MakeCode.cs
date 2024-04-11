@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace AB_game
 {
-    public partial class CodeBreaker : Form
+    public partial class MakeCode : Form
     {
         string code;
         welcome form;
         int guessesRemaining = 10;
-        public CodeBreaker(string code, welcome form)
+        public MakeCode(string code, welcome form)
         {
             InitializeComponent();
 
