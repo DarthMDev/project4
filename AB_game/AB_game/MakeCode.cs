@@ -15,11 +15,10 @@ namespace AB_game
         string code;
         welcome form;
         int guessesRemaining = 10;
-        public MakeCode(string code, welcome form)
+        public MakeCode(welcome form)
         {
             InitializeComponent();
 
-            this.code = code;
             this.form = form;
         }
 
@@ -83,13 +82,19 @@ namespace AB_game
             }
 
             // Construct and return the hints string
-            label_Hint.Text =  $"{A}A{B}B";
+            label_Hint.Text = $"{A}A{B}B";
 
-            if(label_Hint.Text != "4A0B")
+            if (label_Hint.Text != "4A0B")
             {
                 guessesRemaining--;
                 label_GuessesRemaining.Text = "Guesses Remaining: " + guessesRemaining.ToString();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.code = textBox_Code.Text;
+            button_Submit.Enabled = true;
         }
     }
 }

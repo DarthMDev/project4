@@ -1,91 +1,43 @@
 using System;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace CIS3433
 {
     public class GameLogger
-    // this class is responsible for logging game data to a database
     {
-        private readonly string connectionString; // connection string to the database
-        private int sessionId; // the ID of the current game session
+        private string connectionString;
 
-        public GameLogger(string dbConnectionString)
+        // Constructor that takes a connection string as input
+        public GameLogger(string connectionString)
         {
-            // constructor that initializes the connection string and sets the session ID to -1
-            connectionString = dbConnectionString;
-            sessionId = -1;
+            this.connectionString = connectionString;
         }
-        /// <summary>
-        /// Starts a new game session by inserting a new record into the GameSessions table.
-        /// <param name="playerName">The name of the player.</param>
-        /// <param name="mode">The game mode (e.g., gamebreaker, gamemaker).</param>
-        /// <param name="secretNumber">The secret number for the game session.</param>
-        /// 
-        /// </summary>
-         public void StartNewGameSession(string playerName, string mode, int secretNumber)
+
+        // Method to insert values into the GameDetails table
+        public void LogGameDetails(string playerName, string playMode, string secretNumber, DateTime dateTime, int tries, double secondsTaken, double gameScore)
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                var query = "INSERT INTO GameSessions (PlayerName, Mode, SecretNumber, StartTime) OUTPUT INSERTED.SessionId VALUES (@PlayerName, @Mode, @SecretNumber, @StartTime)";
-                using (var command = new SqlCommand(query, connection))
+                // SQL query to insert values into the GameDetails table
+                string query = "INSERT INTO GameDetails (PlayerName, PlayMode, SecretNumber, DateTime, Tries, SecondsTaken, GameScore) " +
+                               "VALUES (@PlayerName, @PlayMode, @SecretNumber, @DateTime, @Tries, @SecondsTaken, @GameScore)";
+
+                // Create a SqlCommand object with the query and connection
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    // Add parameters to the SqlCommand to prevent SQL injection
                     command.Parameters.AddWithValue("@PlayerName", playerName);
-                    command.Parameters.AddWithValue("@Mode", mode);
+                    command.Parameters.AddWithValue("@PlayMode", playMode);
                     command.Parameters.AddWithValue("@SecretNumber", secretNumber);
-                    command.Parameters.AddWithValue("@StartTime", DateTime.Now);
+                    command.Parameters.AddWithValue("@DateTime", dateTime);
+                    command.Parameters.AddWithValue("@Tries", tries);
+                    command.Parameters.AddWithValue("@SecondsTaken", secondsTaken);
+                    command.Parameters.AddWithValue("@GameScore", gameScore);
 
+                    // Open the connection
                     connection.Open();
-                    sessionId = (int)command.ExecuteScalar();  // Assuming SessionId is an auto-incremented primary key
-                }
-            }
-        }
-        /// <summary>
-        /// Logs a player's guess and the hint provided by the game .
-        /// </summary>
-        /// <param name="guessNumber"></param>
-        /// <param name="hint"></param>
-        public void LogGuess(int guessNumber, string hint)
-        {
-            if (sessionId == -1)
-                throw new InvalidOperationException("Game session has not been started.");
 
-            using (var connection = new SqlConnection(connectionString))
-            {
-                var query = "INSERT INTO Guesses (SessionId, GuessNumber, Hint) VALUES (@SessionId, @GuessNumber, @Hint)";
-                using (var command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@SessionId", sessionId);
-                    command.Parameters.AddWithValue("@GuessNumber", guessNumber);
-                    command.Parameters.AddWithValue("@Hint", hint);
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-       /// <summary>
-       /// Calculates the player's score based on the total number of tries and the total time taken to complete the game.
-       /// </summary>
-       /// <param name="totalTries"></param>
-       /// <param name="totalSeconds"></param>
-        public void FinalizeGameSession(int totalTries, double totalSeconds)
-        {
-            if (sessionId == -1)
-                throw new InvalidOperationException("Game session has not been started.");
-
-            using (var connection = new SqlConnection(connectionString))
-            {
-                var score = CalculateScore(totalTries, totalSeconds);
-                var query = "UPDATE GameSessions SET EndTime = @EndTime, TotalTries = @TotalTries, TotalSeconds = @TotalSeconds, Score = @Score WHERE SessionId = @SessionId";
-                using (var command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@EndTime", DateTime.Now);
-                    command.Parameters.AddWithValue("@TotalTries", totalTries);
-                    command.Parameters.AddWithValue("@TotalSeconds", totalSeconds);
-                    command.Parameters.AddWithValue("@Score", score);
-                    command.Parameters.AddWithValue("@SessionId", sessionId);
-
-                    connection.Open();
+                    // Execute the SQL command
                     command.ExecuteNonQuery();
                 }
             }
