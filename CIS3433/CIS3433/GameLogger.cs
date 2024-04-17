@@ -42,5 +42,23 @@ namespace CIS3433
                 }
             }
         }
+        public void ClearDatabase()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // SQL query to delete all rows from the GameDetails table
+                string query = "DELETE FROM GameDetails";
+
+                // Create a SqlCommand object with the query and connection
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Open the connection
+                    connection.Open();
+
+                    // Execute the SQL command
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

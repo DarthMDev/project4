@@ -47,5 +47,23 @@ namespace AB_game
         {
 
         }
+
+        private void clearDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clearDatabaseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            // this will clear the database
+            // are you sure you want to clear the database dialog
+            // if yes then clear the database
+            // if no then do nothing
+            if (MessageBox.Show("Are you sure you want to clear the database? This change cannot be undone and is really dangerous. The data cannot be recovered.", "Clear Database", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                gameLogger.ClearDatabase();
+            }
+           
+        }
     }
 }
