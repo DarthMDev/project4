@@ -29,5 +29,10 @@ namespace AB_game
             this.Hide();
 
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
