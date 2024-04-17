@@ -10,16 +10,14 @@ namespace AB_game
         public welcome()
         {
             InitializeComponent();
-            string path = Directory.GetCurrentDirectory();
-            string connectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={path}..\..\..\..\Scoreboard.mdf;Integrated Security=True";
 
-            // Create an instance of the GameLogger class with the updated connection string
-            gameLogger = new GameLogger(connectionString);
+            // Create an instance of the GameLogger class with the connection string
+            gameLogger = new GameLogger($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Scoreboard.mdf;Integrated Security=True;");
         }
 
         private void button_Submit_Click(object sender, EventArgs e)
         {
-            MakeCode codeMaker = new(this);
+            MakeCode codeMaker = new(this, gameLogger, textBox_Name.Text);
             codeMaker.Show();
             this.Hide();
         }
@@ -29,7 +27,6 @@ namespace AB_game
             BreakCode codeBreaker = new(this, gameLogger, textBox_Name.Text);
             codeBreaker.Show();
             this.Hide();
-            gameLogger.LogGameDetails("Team", "Code Breaker", "2345", DateTime.Now, 3, 10, 10);
 
         }
     }

@@ -59,7 +59,7 @@ namespace AB_game
                 stopwatch.Stop();
                 gameStarted = false;
                 double score = ScoreCalculator.CalculateScore(guessCount, stopwatch.Elapsed.TotalSeconds);
-                gameLogger.LogGameDetails(playerName, "Code Breaker", currentGuess, DateTime.Now, guessCount, (int)Math.Round(stopwatch.Elapsed.TotalSeconds), (int)Math.Round(score));
+                gameLogger.LogGameDetails(playerName, "Code Breaker", currentGuess, DateTime.Now, guessCount, stopwatch.Elapsed.TotalSeconds, score);
                 InitializeGame(); // Start a new game
             }
             else

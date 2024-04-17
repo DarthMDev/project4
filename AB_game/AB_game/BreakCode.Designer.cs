@@ -53,37 +53,42 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(504, 130);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(481, 113);
             label1.Name = "label1";
-            label1.Size = new Size(37, 20);
+            label1.Size = new Size(80, 41);
             label1.TabIndex = 2;
             label1.Text = "Hint";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(255, 130);
+            label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(236, 113);
             label2.Name = "label2";
-            label2.Size = new Size(47, 20);
+            label2.Size = new Size(99, 41);
             label2.TabIndex = 3;
             label2.Text = "Guess";
             // 
             // button1
             // 
-            button1.Location = new Point(350, 221);
+            button1.BackColor = Color.FromArgb(255, 255, 192);
+            button1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(301, 213);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(186, 77);
             button1.TabIndex = 4;
             button1.Text = "Next Guess";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // label_Error
             // 
             label_Error.AutoSize = true;
-            label_Error.Location = new Point(344, 271);
+            label_Error.Font = new Font("Britannic Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_Error.Location = new Point(140, 322);
             label_Error.Name = "label_Error";
-            label_Error.Size = new Size(0, 20);
+            label_Error.Size = new Size(0, 26);
             label_Error.TabIndex = 6;
             // 
             // BreakCode

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CIS3433;
 
 namespace AB_game
 {
@@ -14,12 +16,18 @@ namespace AB_game
     {
         string code;
         welcome form;
+        bool gameStarted = false;
         int guessesRemaining = 10;
-        public MakeCode(welcome form)
+        string playerName;
+        Stopwatch stopwatch = new Stopwatch();
+        GameLogger gameLogger;
+        public MakeCode(welcome form, GameLogger gameLogger, string playerName)
         {
             InitializeComponent();
 
             this.form = form;
+            this.gameLogger = gameLogger;
+            this.playerName = playerName;
         }
 
         private void CodeBreaker_FormClosed(object sender, FormClosedEventArgs e)
@@ -29,6 +37,11 @@ namespace AB_game
 
         private void button_Submit_Click(object sender, EventArgs e)
         {
+            if(!gameStarted)
+            {
+                gameStarted = true;
+                stopwatch.Start();
+            }
             // Initialize variables to count the number of A and B hints
             int A = 0; // Number of digits in the guess that are in the correct position
             int B = 0; // Number of digits in the guess that are in the secret code but in the wrong position
@@ -88,6 +101,12 @@ namespace AB_game
             {
                 guessesRemaining--;
                 label_GuessesRemaining.Text = "Guesses Remaining: " + guessesRemaining.ToString();
+            }
+            else
+            {
+                stopwatch.Stop();
+                double score = ScoreCalculator.CalculateScore(11-guessesRemaining, stopwatch.Elapsed.TotalSeconds);
+                gameLogger.LogGameDetails(playerName, "Code Maker", code, DateTime.Now, 11-guessesRemaining, stopwatch.Elapsed.TotalSeconds, score);
             }
         }
 
