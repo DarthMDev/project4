@@ -58,7 +58,7 @@
             button_Submit.Font = new Font("Britannic Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_Submit.Location = new Point(521, 321);
             button_Submit.Name = "button_Submit";
-            button_Submit.Size = new Size(190, 73);
+            button_Submit.Size = new Size(190, 80);
             button_Submit.TabIndex = 3;
             button_Submit.Text = "Make a Code";
             button_Submit.UseVisualStyleBackColor = false;
@@ -70,7 +70,7 @@
             button1.Font = new Font("Britannic Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.Location = new Point(243, 321);
             button1.Name = "button1";
-            button1.Size = new Size(190, 73);
+            button1.Size = new Size(190, 80);
             button1.TabIndex = 4;
             button1.Text = "Break a Code";
             button1.UseVisualStyleBackColor = false;
@@ -108,26 +108,27 @@
             contextMenuStrip1.ImageScalingSize = new Size(20, 20);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { makeCodeToolStripMenuItem, breakCodeToolStripMenuItem, exitToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(211, 104);
+            contextMenuStrip1.Size = new Size(155, 76);
+            contextMenuStrip1.Opening += contextMenuStrip1_Opening;
             // 
             // makeCodeToolStripMenuItem
             // 
             makeCodeToolStripMenuItem.Name = "makeCodeToolStripMenuItem";
-            makeCodeToolStripMenuItem.Size = new Size(210, 24);
+            makeCodeToolStripMenuItem.Size = new Size(154, 24);
             makeCodeToolStripMenuItem.Text = "Make Code";
             makeCodeToolStripMenuItem.Click += button_Submit_Click;
             // 
             // breakCodeToolStripMenuItem
             // 
             breakCodeToolStripMenuItem.Name = "breakCodeToolStripMenuItem";
-            breakCodeToolStripMenuItem.Size = new Size(210, 24);
+            breakCodeToolStripMenuItem.Size = new Size(154, 24);
             breakCodeToolStripMenuItem.Text = "Break Code";
             breakCodeToolStripMenuItem.Click += button1_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(210, 24);
+            exitToolStripMenuItem.Size = new Size(154, 24);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -137,6 +138,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(955, 588);
+            ContextMenuStrip = contextMenuStrip1;
             Controls.Add(label4);
             Controls.Add(textBox_Name);
             Controls.Add(label3);
@@ -145,6 +147,7 @@
             Controls.Add(label1);
             Name = "welcome";
             Text = "Welcome";
+            Load += welcome_Load;
             contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

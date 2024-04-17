@@ -34,5 +34,18 @@ namespace AB_game
         {
             Close();
         }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            //make it to where it shows the context menu strip
+
+
+        }
+
+        private void welcome_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
