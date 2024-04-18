@@ -63,7 +63,13 @@ namespace AB_game
             {
                 gameLogger.ClearDatabase();
             }
-           
+
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            // close the form
+           Close();
         }
     }
 }
