@@ -112,8 +112,16 @@ namespace AB_game
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.code = textBox_Code.Text;
-            button_Submit.Enabled = true;
+            if (textBox_Code.Text.Distinct().Count() == textBox_Code.Text.Length)
+            {
+                // No duplicate characters
+                this.code = textBox_Code.Text;
+                button_Submit.Enabled = true;
+            }
+            else
+            {
+                label_Hint.Text = "No repeating numbers allowed in code";
+            }
         }
     }
 }

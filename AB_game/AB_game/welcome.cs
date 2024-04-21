@@ -59,7 +59,7 @@ namespace AB_game
             // are you sure you want to clear the database dialog
             // if yes then clear the database
             // if no then do nothing
-            if (MessageBox.Show("Are you sure you want to clear the database? This change cannot be undone and is really dangerous. The data cannot be recovered.", "Clear Database", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to clear the database? This change cannot be undone and the data cannot be recovered.", "Clear Database", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 gameLogger.ClearDatabase();
             }
