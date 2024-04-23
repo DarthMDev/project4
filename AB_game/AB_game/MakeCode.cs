@@ -28,6 +28,8 @@ namespace AB_game
             this.form = form;
             this.gameLogger = gameLogger;
             this.playerName = playerName;
+
+            listBox_GuessHistory.Items.Add("Guess History:");
         }
 
         private void CodeBreaker_FormClosed(object sender, FormClosedEventArgs e)
@@ -97,6 +99,9 @@ namespace AB_game
             // Construct and return the hints string
             label_Hint.Text = $"{A}A{B}B";
 
+            listBox_GuessHistory.Items.Add($"Guess #{11 - guessesRemaining}: {guess} - Hint: {label_Hint.Text}");
+            listBox_GuessHistory.SelectedIndex = listBox_GuessHistory.Items.Count - 1;
+
             if (label_Hint.Text != "4A0B")
             {
                 guessesRemaining--;
@@ -105,8 +110,9 @@ namespace AB_game
             else
             {
                 stopwatch.Stop();
-                double score = ScoreCalculator.CalculateScore(11-guessesRemaining, stopwatch.Elapsed.TotalSeconds);
+                int score = (int)ScoreCalculator.CalculateScore(11-guessesRemaining, stopwatch.Elapsed.TotalSeconds);
                 gameLogger.LogGameDetails(playerName, "Code Maker", code, DateTime.Now, 11-guessesRemaining, stopwatch.Elapsed.TotalSeconds, score);
+                MessageBox.Show(@$"{playerName}, Code Maker, Code: {code}, {DateTime.Now}, Guesses: {11-guessesRemaining}, Time Elapsed: {stopwatch.Elapsed.TotalSeconds}, Score: {score}", "Datbase Results");
             }
         }
 
