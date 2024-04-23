@@ -134,7 +134,7 @@
             Controls.Add(label1);
             Controls.Add(textBox_Guess);
             Name = "MakeCode";
-            Text = "CodeBreaker";
+            Text = "Code Maker";
             FormClosed += CodeBreaker_FormClosed;
             ResumeLayout(false);
             PerformLayout();

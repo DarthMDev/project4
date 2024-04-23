@@ -51,10 +51,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Comic Sans MS", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(261, 74);
-            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Location = new Point(123, 36);
             label1.Name = "label1";
-            label1.Size = new Size(1493, 223);
+            label1.Size = new Size(748, 111);
             label1.TabIndex = 0;
             label1.Text = "Group 7 Project 4";
             // 
@@ -62,10 +61,9 @@
             // 
             button_Submit.BackColor = Color.FromArgb(255, 128, 255);
             button_Submit.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_Submit.Location = new Point(1107, 658);
-            button_Submit.Margin = new Padding(6);
+            button_Submit.Location = new Point(521, 321);
             button_Submit.Name = "button_Submit";
-            button_Submit.Size = new Size(404, 164);
+            button_Submit.Size = new Size(190, 80);
             button_Submit.TabIndex = 3;
             button_Submit.Text = "Make a Code";
             button_Submit.UseVisualStyleBackColor = false;
@@ -75,10 +73,9 @@
             // 
             button1.BackColor = Color.FromArgb(255, 255, 128);
             button1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(516, 658);
-            button1.Margin = new Padding(6);
+            button1.Location = new Point(243, 321);
             button1.Name = "button1";
-            button1.Size = new Size(404, 164);
+            button1.Size = new Size(190, 80);
             button1.TabIndex = 4;
             button1.Text = "Break a Code";
             button1.UseVisualStyleBackColor = false;
@@ -88,29 +85,26 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label3.Location = new Point(446, 320);
-            label3.Margin = new Padding(6, 0, 6, 0);
+            label3.Location = new Point(210, 156);
             label3.Name = "label3";
-            label3.Size = new Size(1086, 71);
+            label3.Size = new Size(552, 37);
             label3.TabIndex = 5;
             label3.Text = "Michael Isaacson, Frank Crouch, Michael Gray";
             // 
             // textBox_Name
             // 
-            textBox_Name.Location = new Point(846, 525);
-            textBox_Name.Margin = new Padding(6);
+            textBox_Name.Location = new Point(398, 256);
             textBox_Name.Name = "textBox_Name";
-            textBox_Name.Size = new Size(344, 47);
+            textBox_Name.Size = new Size(164, 27);
             textBox_Name.TabIndex = 6;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(846, 437);
-            label4.Margin = new Padding(6, 0, 6, 0);
+            label4.Location = new Point(398, 213);
             label4.Name = "label4";
-            label4.Size = new Size(182, 71);
+            label4.Size = new Size(94, 37);
             label4.TabIndex = 8;
             label4.Text = "Name:";
             // 
@@ -119,27 +113,26 @@
             contextMenuStrip1.ImageScalingSize = new Size(20, 20);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { makeCodeToolStripMenuItem, breakCodeToolStripMenuItem, exitToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(249, 148);
-            contextMenuStrip1.Opening += contextMenuStrip1_Opening;
+            contextMenuStrip1.Size = new Size(155, 76);
             // 
             // makeCodeToolStripMenuItem
             // 
             makeCodeToolStripMenuItem.Name = "makeCodeToolStripMenuItem";
-            makeCodeToolStripMenuItem.Size = new Size(248, 48);
+            makeCodeToolStripMenuItem.Size = new Size(154, 24);
             makeCodeToolStripMenuItem.Text = "Make Code";
             makeCodeToolStripMenuItem.Click += button_Submit_Click;
             // 
             // breakCodeToolStripMenuItem
             // 
             breakCodeToolStripMenuItem.Name = "breakCodeToolStripMenuItem";
-            breakCodeToolStripMenuItem.Size = new Size(248, 48);
+            breakCodeToolStripMenuItem.Size = new Size(154, 24);
             breakCodeToolStripMenuItem.Text = "Break Code";
             breakCodeToolStripMenuItem.Click += button1_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(248, 48);
+            exitToolStripMenuItem.Size = new Size(154, 24);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -149,7 +142,8 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { clearDatabaseToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(2029, 52);
+            menuStrip1.Padding = new Padding(3, 1, 0, 1);
+            menuStrip1.Size = new Size(905, 26);
             menuStrip1.TabIndex = 9;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -157,30 +151,30 @@
             // 
             clearDatabaseToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clearDatabaseToolStripMenuItem1, exitToolStripMenuItem1 });
             clearDatabaseToolStripMenuItem.Name = "clearDatabaseToolStripMenuItem";
-            clearDatabaseToolStripMenuItem.Size = new Size(87, 48);
+            clearDatabaseToolStripMenuItem.Size = new Size(46, 24);
             clearDatabaseToolStripMenuItem.Text = "File";
             clearDatabaseToolStripMenuItem.Click += clearDatabaseToolStripMenuItem_Click;
             // 
             // clearDatabaseToolStripMenuItem1
             // 
             clearDatabaseToolStripMenuItem1.Name = "clearDatabaseToolStripMenuItem1";
-            clearDatabaseToolStripMenuItem1.Size = new Size(448, 54);
+            clearDatabaseToolStripMenuItem1.Size = new Size(224, 26);
             clearDatabaseToolStripMenuItem1.Text = "Clear Database";
             clearDatabaseToolStripMenuItem1.Click += clearDatabaseToolStripMenuItem1_Click;
             // 
             // exitToolStripMenuItem1
             // 
             exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            exitToolStripMenuItem1.Size = new Size(448, 54);
+            exitToolStripMenuItem1.Size = new Size(224, 26);
             exitToolStripMenuItem1.Text = "Exit";
             exitToolStripMenuItem1.Click += exitToolStripMenuItem1_Click;
             // 
             // welcome
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(2029, 1205);
+            ClientSize = new Size(905, 515);
             ContextMenuStrip = contextMenuStrip1;
             Controls.Add(menuStrip1);
             Controls.Add(label4);
@@ -190,10 +184,8 @@
             Controls.Add(button_Submit);
             Controls.Add(label1);
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(6);
             Name = "welcome";
             Text = "Welcome";
-            Load += welcome_Load;
             contextMenuStrip1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
