@@ -42,10 +42,10 @@ namespace AB_game
             }
 
             string hint = textBox_Hint.Text;
-            int cows = int.Parse(hint.Substring(0, 1));
-            int bulls = int.Parse(hint.Substring(2, 1));
+            int As = int.Parse(hint.Substring(0, 1));
+            int Bs = int.Parse(hint.Substring(2, 1));
 
-            if (cows == 4) // If all cows, prompt the user to enter their score
+            if (As == 4) // If all As, prompt the user to enter their score
             {
                 // Stop the game and display a dialog box to enter the score
                 stopwatch.Stop();
@@ -75,9 +75,9 @@ namespace AB_game
                 // Remove impossible numbers based on the hint
                 possibleNumbers = possibleNumbers.Where(num =>
                 {
-                    int numCows = CountCows(num, currentGuess);
-                    int numBulls = CountBulls(num, currentGuess);
-                    return numCows == cows && numBulls == bulls;
+                    int numAs = CountAs(num, currentGuess);
+                    int numBs = CountBs(num, currentGuess);
+                    return numAs == As && numBs == Bs;
                 }).ToList();
 
                 // Move to the next guess
@@ -95,6 +95,7 @@ namespace AB_game
             currentGuess = possibleNumbers.First(); // Start with the first guess
             guessCount = 1;
             textBox_Guess.Text = currentGuess;
+            label_Error.Text = $"Number of possible remaining guesses: {possibleNumbers.Count()}";
         }
 
         private List<string> GeneratePossibleNumbers()
@@ -105,14 +106,14 @@ namespace AB_game
                 .ToList();
         }
 
-        private int CountCows(string secret, string guess)
+        private int CountAs(string secret, string guess)
         {
             return secret.Where((t, i) => t == guess[i]).Count();
         }
 
-        private int CountBulls(string secret, string guess)
+        private int CountBs(string secret, string guess)
         {
-            return guess.Count(t => secret.Contains(t)) - CountCows(secret, guess);
+            return guess.Count(t => secret.Contains(t)) - CountAs(secret, guess);
         }
 
         private void BreakCode_Load(object sender, EventArgs e)
